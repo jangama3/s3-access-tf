@@ -31,7 +31,7 @@ resource "aws_subnet" "sub2" {
   }
 }
 
-resource "aws_internet_gateway" "ja-gw" {
+resource "aws_internet_gateway" "jagw" {
   vpc_id = aws_vpc.javpc2.id
 }
 
@@ -40,7 +40,7 @@ resource "aws_route_table" "jartinternetaccess" {
     vpc_id = aws_vpc.javpc2.id
     route = {
         cidr_block= "0.0.0.0/0"
-        gateway_id = aws_internet_gateway.ja-gw.id
+        gateway_id = aws_internet_gateway.jagw.id
     }
   
 }
