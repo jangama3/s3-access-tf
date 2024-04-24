@@ -8,7 +8,7 @@ terraform {
   required_version = "~>1.6.0"
   backend "s3" {
     bucket         = "terraform-bucketja"
-    key            = "staticwebsite/terraform.tfstate"
+    key            = "s3-access-tf/terraform.tfstate"
     dynamodb_table = "terraform-table"
     region         = "us-east-1"
   }
