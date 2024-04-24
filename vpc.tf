@@ -38,7 +38,7 @@ resource "aws_internet_gateway" "jagw" {
 
 resource "aws_route_table" "jartinternetaccess" {
     vpc_id = aws_vpc.javpc2.id
-    route = {
+    route  {
         cidr_block= "0.0.0.0/0"
         gateway_id = aws_internet_gateway.jagw.id
     }
