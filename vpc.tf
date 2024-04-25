@@ -56,3 +56,35 @@ resource "aws_route_table_association" "rta2" {
   subnet_id = aws_subnet.sub2.id
   route_table_id = aws_route_table.jartinternetaccess.id
 }
+
+resource "aws_security_group" "websg" {
+  name        = "websg"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.javpc2.id
+
+  ingress {
+    description = "http"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    
+  }
+
+  ingress {
+    description = "ssh"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "tcp"
+    cidr_blocks      = ["0.0.0.0/0"]
+    
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+}
