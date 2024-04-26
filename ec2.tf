@@ -21,7 +21,7 @@ resource "aws_instance" "webserver2" {
   subnet_id = aws_subnet.sub2.id
   user_data = base64encode("userdata2.sh")
    tags = {
-    name = "webserver12
+    name = "webserver2"
   }
 
  
