@@ -1,4 +1,4 @@
-resource "aws_vpc" "javpc2" {
+resource "aws_vpc" "javpc2024" {
   cidr_block       = var.cidr
   instance_tenancy = "default"
 
@@ -9,7 +9,7 @@ resource "aws_vpc" "javpc2" {
 
 
 resource "aws_subnet" "sub1" {
-  vpc_id     = aws_vpc.javpc2.id
+  vpc_id     = aws_vpc.javpc2024.id
   cidr_block = "10.0.0.0/24"
   map_public_ip_on_launch = true
   availability_zone = "us-east-1a"
@@ -20,7 +20,7 @@ resource "aws_subnet" "sub1" {
 }
 
 resource "aws_subnet" "sub2" {
-  vpc_id     = aws_vpc.javpc2.id
+  vpc_id     = aws_vpc.javpc2024.id
   cidr_block = "10.0.1.0/24"
   map_public_ip_on_launch = true
   availability_zone = "us-east-1b"
@@ -32,12 +32,12 @@ resource "aws_subnet" "sub2" {
 }
 
 resource "aws_internet_gateway" "jagw" {
-  vpc_id = aws_vpc.javpc2.id
+  vpc_id = aws_vpc.javpc2024.id
 }
 
 
 resource "aws_route_table" "jartinternetaccess" {
-    vpc_id = aws_vpc.javpc2.id
+    vpc_id = aws_vpc.javpc2024.id
     route  {
         cidr_block= "0.0.0.0/0"
         gateway_id = aws_internet_gateway.jagw.id
