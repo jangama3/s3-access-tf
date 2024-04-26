@@ -4,7 +4,7 @@ resource "aws_instance" "webserver1" {
   vpc_security_group_ids = [
     aws_security_group.websg.id]
   subnet_id = aws_subnet.sub1.id
-  user_data = "${file("apache_config.sh")}"
+  user_data = "${file("userdata1.sh")}"
 
  
 }
