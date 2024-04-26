@@ -60,7 +60,7 @@ resource "aws_route_table_association" "rta2" {
 resource "aws_security_group" "websg" {
   name        = "websg"
   description = "Allow TLS inbound traffic and all outbound traffic"
-  vpc_id      = aws_vpc.javpc2.id
+  vpc_id      = aws_vpc.javpc2024.id
 
   ingress {
     description = "http"
