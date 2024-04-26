@@ -1,4 +1,5 @@
 resource "aws_instance" "webserver1" {
+  name = "webserver1"
   ami           = "ami-080e1f13689e07408"
   instance_type = "t2.micro"
   vpc_security_group_ids = [
@@ -10,6 +11,7 @@ resource "aws_instance" "webserver1" {
 }
 
 resource "aws_instance" "webserver2" {
+    name = "webserver2"
   ami           = "ami-080e1f13689e07408"
   instance_type = "t2.micro"
   vpc_security_group_ids = [
