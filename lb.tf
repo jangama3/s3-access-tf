@@ -51,6 +51,6 @@ resource "aws_lb_listener" "jalistener" {
 }
 
 output "loadbalancerdns" {
-    value = aws_lb.myalb.name
+    value = aws_lb.ja-alb.name
   
 }
