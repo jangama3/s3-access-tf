@@ -5,14 +5,16 @@ resource "aws_instance" "webserver1" {
   vpc_security_group_ids = [
     aws_security_group.websg.id]
   subnet_id = aws_subnet.sub1.id
-  user_data = << EOF
-		#! /bin/bash
-                sudo apt-get update
-		sudo apt-get install -y apache2
-		sudo systemctl start apache2
-		sudo systemctl enable apache2
-		echo "<h1>Deployed via Terraform</h1>" | sudo tee /var/www/html/index.html
-	EOF
+  user_data = <<-EOF
+   #!/bin/bash
+   sudo apt update
+   sudo apt install apache2 -y
+   echo "Hello from Srini" > /var/www/html/index.html
+   echo "Hi there !!"> /var/www/html/hi.html
+   echo "test webserver" > /var/www/html/test.html
+   sudo systemctl restart apache2
+   sudo systemctl enable apache2
+  EOF  
 
   tags = {
     name = "webserver1"
@@ -26,7 +28,8 @@ resource "aws_instance" "webserver2" {
   vpc_security_group_ids = [
     aws_security_group.websg.id]
   subnet_id = aws_subnet.sub2.id
-  user_data = base64encode("userdata2.sh")
+  useruser_data = "${file("userdata2.sh")}"
+  #user_data = base64encode("userdata2.sh")
    tags = {
     name = "webserver2"
   }
