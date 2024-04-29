@@ -28,7 +28,7 @@ resource "aws_instance" "webserver2" {
   vpc_security_group_ids = [
     aws_security_group.websg.id]
   subnet_id = aws_subnet.sub2.id
-  useruser_data = "${file("userdata2.sh")}"
+  useruser_data = "${file('userdata2.sh')}"
   #user_data = base64encode("userdata2.sh")
    tags = {
     name = "webserver2"
