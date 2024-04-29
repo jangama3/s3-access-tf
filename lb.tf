@@ -16,7 +16,7 @@ resource "aws_lb" "ja-alb" {
 resource "aws_lb_target_group" "tg" {
     name = "jawebtg"
     port = 80
-    protocol = "http"
+    protocol = "HTTP"
     vpc_id = aws_vpc.javpc2024.id
     health_check {
       path = "/"
@@ -41,7 +41,7 @@ resource "aws_lb_target_group_attachment" "jaattach2" {
 resource "aws_lb_listener" "jalistener" {
     load_balancer_arn = aws_lb.ja-alb.arn
     port = 80
-    protocol = "http"
+    protocol = "HTTP"
     default_action {
       target_group_arn = aws_lb_target_group.tg.arn
       type = "forward"
